@@ -61,9 +61,9 @@ Object.defineProperty(AndroidBitmap.prototype, '__context', {
 });
 
 // [ANDROID INTERNAL] __createPaint()
-AndroidBitmap.prototype.__createPaint = function(color) {
+AndroidBitmap.prototype.__createPaint = function(color, strokeWidth) {
     var paint = new android.graphics.Paint();
-
+    if(strokeWidth) paint.setStroke(strokeWidth);
     if (!TypeUtils.isNullOrUndefined(color)) {
         paint.setARGB(color.a, color.r, color.g, color.b);
     }
@@ -90,10 +90,10 @@ AndroidBitmap.prototype._dispose = function(action, tag) {
 };
 
 // [INTERNAL] _drawLine()
-AndroidBitmap.prototype._drawLine = function(start, end, color) {
+AndroidBitmap.prototype._drawLine = function(start, end, color, strokeWidth) {
     this.__canvas.drawLine(start.x, start.y,
                            end.x, end.y,
-                           this.__createPaint(color));
+                           this.__createPaint(color, strokeWidth));
 };
 
 // [INTERNAL] _drawOval()

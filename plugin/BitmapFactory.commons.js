@@ -115,12 +115,12 @@ function setupBitmapClass(bitmapClass) {
     };
 
     // drawLine()
-    bitmapClass.prototype.drawLine = function(start, end, color) {
+    bitmapClass.prototype.drawLine = function(start, end, color, strokeWidth) {
         start = toPoint2D(start);
         end = toPoint2D(end);
         color = toARGB(color);
 
-        this._drawLine(start, end, color);
+        this._drawLine(start, end, color,strokeWidth);
         return this;
     };
 
