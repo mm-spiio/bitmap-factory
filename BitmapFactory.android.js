@@ -63,7 +63,7 @@ Object.defineProperty(AndroidBitmap.prototype, '__context', {
 // [ANDROID INTERNAL] __createPaint()
 AndroidBitmap.prototype.__createPaint = function(color, strokeWidth) {
     var paint = new android.graphics.Paint();
-    if(strokeWidth) paint.setStroke(strokeWidth);
+    if(strokeWidth) paint.setStrokeWidth(strokeWidth);
     if (!TypeUtils.isNullOrUndefined(color)) {
         paint.setARGB(color.a, color.r, color.g, color.b);
     }
