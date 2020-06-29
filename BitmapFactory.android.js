@@ -371,9 +371,25 @@ AndroidBitmap.prototype._writeText = function(txt, leftTop, font) {
     
     paint.setXfermode(new android.graphics.PorterDuffXfermode(android.graphics.PorterDuff.Mode.SRC_OVER));
 
-    this.__canvas.drawText(txt,
-                           leftTop.x, leftTop.y,
-                           paint);
+    if (txt.includes("\n"))
+    {
+        var texts = txt.split("\n");
+
+        for (let txt of texts)
+        {
+            this.__canvas.drawText(txt,
+                leftTop.x, leftTop.y,
+                paint);
+
+            leftTop.y += paint.getTextSize();
+        }
+    }
+    else
+    {
+        this.__canvas.drawText(txt,
+            leftTop.x, leftTop.y,
+            paint);
+    }
 };
 
 // height
